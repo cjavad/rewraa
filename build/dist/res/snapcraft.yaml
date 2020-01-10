@@ -1,0 +1,47 @@
+name: rewraa
+version: 1.6.1
+summary: RewRaa (RSA ENCRYPTED WORLD RELIC AES APPLICATION)
+icon: icon.png
+description:
+  ██████╗ ███████╗██╗    ██╗██████╗  █████╗  █████╗ 
+  ██╔══██╗██╔════╝██║    ██║██╔══██╗██╔══██╗██╔══██╗
+  ██████╔╝█████╗  ██║ █╗ ██║██████╔╝███████║███████║  
+  ██╔══██╗██╔══╝  ██║███╗██║██╔══██╗██╔══██║██╔══██║
+  ██║  ██║███████╗╚███╔███╔╝██║  ██║██║  ██║██║  ██║
+  ╚═╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+                                                  
+
+  RewRaa (RSA ENCRYPTED WORLD RELIC AES APPLICATION, note i have no idea why i choose that name)
+  is a socket-server chat program which uses rsa encryption to encrypt an aes key for encrypting/decrypting messages
+
+  Imagine the following encryption scheme.
+
+  first transfer aes key
+  (CLIENT) => RSA_PUBLIC => (SERVER)
+  (SERVER) => RSA_ENCRYPTED_AES_KEY => (CLIENT)
+
+          (C) => ENC_DATA => (S)
+                      - BROADCAST -
+                      (C) - (C) - (C)  clients decrypt the message
+
+
+
+  But working to give each client a seprate aes-key and signing the data so you can't create a fake server
+  that reads all your data. 
+
+  NOTE. Only connect to trusted server for now it has a big security flaw and the only secure part is if anyone is monitoring your internet traffic
+
+grade: stable
+confinement: devmode
+
+apps:
+  rewraa:
+    command: rewraa
+    plugs: [network-bind, network]
+
+parts:
+  rewraa:
+    plugin: python
+    python-version: python3
+    python-packages: [pycryptodome]
+    source: .
