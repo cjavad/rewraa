@@ -35,7 +35,7 @@ FILES = ["client.py", "server.py"]
 # add setup
 if SETUP:
     END = list()
-    DAT = open("main.py", "r").readlines()
+    DAT = open("main.py", "r", encoding="utf-8").readlines()
     for i in DAT:
         if i.split(" ")[0] in ("import", "from") and not i in MODULES:
             MODULES.append(i)
