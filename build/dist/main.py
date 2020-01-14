@@ -209,7 +209,7 @@ def main(args = None):
         # check if it's a file
         if args[0].split(".").pop() == "rewraa" and os.path.exists(args[0]):
             # load data from file
-            data = json.loads(open(args[0], "r").read())
+            data = json.loads(open(args[0], "r", encoding="utf-8").read())
             # read data
             port = data["port"]
             host = data["host"]
