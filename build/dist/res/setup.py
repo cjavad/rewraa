@@ -28,7 +28,7 @@ NOTE: Only connect to trusted servers for now it has a big security flaw and the
 verstr = "unknown"
 try:
     # from main.py
-    verstrline = open('../dist/main.py', "rt").read()
+    verstrline = open('../dist/main.py', "rt", encoding="utf-8").read()
 except EnvironmentError:
     pass # Okay, there is no version file.
 else:
