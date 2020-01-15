@@ -31,7 +31,7 @@ traffic
 verstr = "1.6.1"
 try:
     # from main.py
-    verstrline = open('../dist/main.py', "rt").read()
+    verstrline = open('../dist/main.py', "rt", encoding="utf-8").read()
 except EnvironmentError:
     pass # Okay, there is no version file.
 else:
