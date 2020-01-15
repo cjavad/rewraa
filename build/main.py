@@ -39,9 +39,9 @@ COMMAND_ARGS = {
         "NOTE: All modes using client that isn't Quiet ask for a username. Mode 2 with server listens on port 7777, the server does not take input\n"
     ],
     "--version": [
-        # print package name (which includes version)
+        # print module name (which includes version)
         # __version__ should only contain the version
-        str(__package__)
+        str(__module__)
     ],
     "--author": [
         str(__author__)
