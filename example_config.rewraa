@@ -1,0 +1,7 @@
+{
+    "host":"localhost",
+    "port":7777,
+    "bits":2048,
+    "name":"MyUserName",
+    "colors":true
+}
