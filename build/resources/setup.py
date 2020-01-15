@@ -28,7 +28,7 @@ traffic
 """
 
 # get version
-verstr = "1.6.2"
+verstr = "1.6.3"
 try:
     # from main.py
     verstrline = open('../dist/main.py', "rt", encoding="utf-8").read()
