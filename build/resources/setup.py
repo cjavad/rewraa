@@ -28,10 +28,11 @@ traffic
 """
 
 # get version
-verstr = "1.6.4"
+verstr = "unknown"
+
 try:
     # from main.py
-    verstrline = open('../dist/main.py', "rt", encoding="utf-8").read()
+    verstrline = open('../main.py', "rt", encoding="utf-8").read()
 except EnvironmentError:
     pass # Okay, there is no version file.
 else:
