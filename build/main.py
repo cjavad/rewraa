@@ -24,7 +24,7 @@ COMMAND_ARGS = {
         "For server: ",
         "   rewraa server port (host, port)",
         "For client: ",
-        "   rewraa host, port useColors? username\n",  
+        "   rewraa host, port, useColors? username\n",  
         "This program can run in five modes: ",
         "Mode 1: Setup, here it's all interactive. No arguments",
         "Mode 2: Quick, if you pass one argument either 'server' or the hostname of the computer you want to connect to",
@@ -123,6 +123,7 @@ def setup():
         # launch client
         host = input("Ip adress of server: ")
         port = int(input("Which port to listen to (7777): ") or 7777)
+        bits = int(input("Bitsize of RSA keypair (2048): ") or 2048)
         # check if system/terminal supports color
         colors = supports_color()
 
@@ -149,7 +150,7 @@ def setup():
         # get username
         name = input("Type Username: ")
         # start client
-        Client(name, host, dict(port=port, colors=colors)).main()
+        Client(name, host, dict(port=port, bits=bits, colors=colors)).main()
     
     # if the input did not choose either of
     # them count down to 0 and start again.
@@ -214,11 +215,11 @@ def main(args = None):
             port = data["port"]
             host = data["host"]
             name = data["name"]
+            bits = data["bits"]
             colors = data["colors"]
             # and start client
-            Client(name, host, dict(port=int(port), colors=bool(colors))).main()
+            Client(name, host, dict(port=int(port), bits=int(bits), colors=bool(colors))).main()
 
-        # 
         elif args[0] == "hosting":
             # if you're using a provider
             # get port from envirment varibles

@@ -3,9 +3,9 @@ from Crypto import Random
 from Crypto.Cipher import PKCS1_OAEP
 
 class rsa:
-    def __init__(self, keys = None):
+    def __init__(self, bits = 4096, keys = None):
         if keys == None:
-            self.keys = RSA.generate(4096, Random.new().read)
+            self.keys = RSA.generate(bits, Random.new().read)
             self.pub = self.keys.publickey().exportKey()
             self.pem = self.keys.exportKey()
         else:

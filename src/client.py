@@ -28,7 +28,7 @@ Takes 3 (4) arguments:
 
 class Client:
     # constuctor (initilizer) takes 3 (4) Arguments
-    def __init__(self, name, host, options = {"port":7777, "colors":False}):
+    def __init__(self, name, host, options = {"port":7777, "bits": 2048,  "colors":False}):
         # check colors
         if not options["colors"]:
             # if colors is off, override function
@@ -38,7 +38,7 @@ class Client:
             color = lambda msg, col: msg
 
         # generate rsa keypair
-        self.keys = rsa()
+        self.keys = rsa(options["bits"])
         # set key varible to None
         self.key = None
         # set name to name
