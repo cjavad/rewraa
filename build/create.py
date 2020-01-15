@@ -9,7 +9,7 @@ this does not make the program that faster but it creates some security for the 
 # VARIBLES
 OUTFILE = "rewraa.pyx" # file to output to
 SETUP = True # to include main.py
-BASE_DIR = "../../src/" # dir for all files
+BASE_DIR = "../src/" # dir for all files
 
 # Banned lines of code (Modules)
 BANNED_MODULES = [

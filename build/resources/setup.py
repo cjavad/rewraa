@@ -3,29 +3,32 @@ from setuptools import Extension
 from setuptools import setup as setup_
 
 LONG_DES = """
-RewRaa (RSA ENCRYPTED WILD ROUND AES APPLICATION, note i have no idea why i choose that name)
-is a socket-server chat program which uses rsa encryption to encrypt an aes key for encrypting/decrypting messages
+RewRaa (RSA ENCRYPTED WILD ROUND AES APPLICATION, note i have no idea
+why i choose that name) is a socket-server chat program which uses rsa
+encryption to encrypt an aes key for encrypting/decrypting messages
 
 Imagine the following encryption scheme:
-```
-# first transfer aes key
-(CLIENT) => RSA_PUBLIC => (SERVER)
-(SERVER) => RSA_ENCRYPTED_AES_KEY => (CLIENT)
 
-        (C) => ENC_DATA => (S)
-                    - BROADCAST -
-                    (C) - (C) - (C) # clients decrypt the message
+::
 
-```
+    # first transfer aes key
+    (CLIENT) => RSA_PUBLIC => (SERVER)
+    (SERVER) => RSA_ENCRYPTED_AES_KEY => (CLIENT)
 
-But working to give each client a seprate aes-key and signing the data so you can't create a fake server
-that reads all your data. 
+            (C) => ENC_DATA => (S)
+                        - BROADCAST -
+                        (C) - (C) - (C) # clients decrypt the message
 
-NOTE: Only connect to trusted servers for now it has a big security flaw and the only secure part is if anyone is monitoring your internet traffic
+But working to give each client a seprate aes-key and signing the data
+so you can’t create a fake server that reads all your data.
+
+NOTE: Only connect to trusted servers for now it has a big security flaw
+and the only secure part is if anyone is monitoring your internet
+traffic
 """
 
 # get version
-verstr = "unknown"
+verstr = "1.6.1"
 try:
     # from main.py
     verstrline = open('../dist/main.py', "rt").read()
@@ -41,7 +44,6 @@ else:
     else:
         # else stop and exit
         raise RuntimeError("unable to find version in main.py")
-
 # setup
 
 setup_(

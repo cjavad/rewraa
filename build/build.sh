@@ -1,8 +1,6 @@
 #!/bin/bash
 
 # building into release
-# cd into dist
-cd dist
 
 if [ -z ${GPGKEY+x} ]
 then 
@@ -13,8 +11,8 @@ fi
 
 if [ "$1" == "clean" ];
 then
-    chmod 777 ../release
-    rm -rf ../release
+    chmod 777 ./release
+    rm -rf ./release
     rm ./rewraa.c
     rm ./rewraa.pyx
     exit
@@ -23,11 +21,11 @@ fi
 if [ "$1" == "build" ];
 then
     command -v python3  >/dev/null 2>&1 || { echo >&2 "I require python3 but it's not installed.  Aborting."; exit 1; }
-    if [ ! -f ../release/setup.py ]; then 
+    if [ ! -f ./release/setup.py ]; then 
         echo Project has not been created yet
         exit
     fi
-    cd ../release/
+    cd ./release/
     # Build
     python3 setup.py build
     python3 setup.py sdist
@@ -42,10 +40,10 @@ then
     command -v python3  >/dev/null 2>&1 || { echo >&2 "I require python3 but it's not installed.  Aborting."; exit 1; }
     python3 ./create.py
     python3 ./build.py
-    mkdir ../release
-    cp ./res/* ../release
-    cp ./rewraa.c ../release/rewraa.c
-    cd ../release
+    mkdir ./release
+    cp ./resources/* ./release
+    cp ./rewraa.c ./release/rewraa.c
+    cd ./release
     ls
     echo "Use setup.py build to build and setup.py install for installing package"
     exit
