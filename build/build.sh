@@ -13,8 +13,6 @@ if [ "$1" == "clean" ];
 then
     chmod 777 ./release
     rm -rf ./release
-    rm ./rewraa.c
-    rm ./rewraa.pyx
     exit
 fi 
 
@@ -41,8 +39,11 @@ then
     python3 ./create.py
     python3 ./build.py
     mkdir ./release
+    mkdir ./release/rewraa
     cp ./resources/* ./release
-    cp ./rewraa.c ./release/rewraa.c
+    cp ./resources/rewraa ./release/rewraa/__main__.py
+    mv ./rewraa.pyx ./release/rewraa/__init__.py
+    mv ./rewraa.c ./release/rewraa.c
     cd ./release
     ls
     echo "Use setup.py build to build and setup.py install for installing package"

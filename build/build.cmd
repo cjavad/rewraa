@@ -3,8 +3,6 @@ REM Building to release
 
 IF "%1"=="clean" (
     rd /s /q .\release
-    del .\rewraa.pyx
-    del .\rewraa.c
     goto END
 )
 
@@ -35,8 +33,11 @@ IF "%1"=="create" (
     py .\create.py
     py .\build.py build_ext --inplace
     mkdir .\release
-    copy .\resources\* .\release
-    copy .\rewraa.c .\release\rewraa.c
+    mkdir .\release\rewraa
+    move .\resources\* .\release
+    move .\rewraa.c .\release\rewraa.c
+    copy ./resources/rewraa ./release/rewraa/__main__.py
+    move ./rewraa.pyx ./release/rewraa/__init__.py
     cd .\release
     dir
     echo "Use setup.py build to build and setup.py install for installing package"

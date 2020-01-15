@@ -11,8 +11,8 @@ Generates and random string of charecters [a-Z] and numbers [0-9]
 that is Cryptograficly secure using SystemRandom()
 """
 
-def generate():
-    return ''.join([random.SystemRandom().choice(string.ascii_letters + string.digits) for x in range(32)])
+def generate(n = 32):
+    return ''.join([random.SystemRandom().choice(string.ascii_letters + string.digits) for x in range(n)])
 
 """server class
 Takes 2 (3) Arguments:

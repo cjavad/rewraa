@@ -1,5 +1,5 @@
 import re
-from setuptools import Extension
+from setuptools import Extension, find_packages
 from setuptools import setup as setup_
 
 LONG_DES = """
@@ -46,26 +46,51 @@ else:
         # else stop and exit
         raise RuntimeError("unable to find version in main.py")
 # setup
+name = "rewraa"
+author="Javad Shafique"
+author_email="javadscript@gmx.com"
+install_requires=["pycryptodome"]
+description="A Encrypted Chat program"
+entry_points = {
+    "console_scripts": [
+        "rewraa = rewraa:main"
+    ]
+}
+include_package_data=True
 
-setup_(
-    name="rewraa",
-    author="Javad Shafique",
-    author_email="javadscript@gmx.com",
-    version=verstr,
-    install_requires=["pycryptodome"],
-    setup_requires=["cython"],
-    ext_modules=[
-        # build C code my best attempt to protect my sourcecode
-        # good luck reading that. 
-        Extension("rewraa", ["rewraa.c"])
-    ],
-    description="A Encrypted Chat program",
-    long_description=LONG_DES,
-    entry_points = {
-        "console_scripts": [
-            "rewraa = rewraa:main"
-        ]
-    },
-    # Package data (icon, license)
-    include_package_data=True
-)
+# disable c compiling for now
+
+if False:
+    setup_(
+        name=name,
+        author=author,
+        author_email=author_email,
+        version=verstr,
+        install_requires=install_requires,
+        setup_requires=["cython"],
+        ext_modules=[
+            # build C code my best attempt to protect my sourcecode
+            # good luck reading that. 
+            Extension("rewraa", ["rewraa.c"])
+        ],
+        description=description,
+        long_description=LONG_DES,
+        entry_points=entry_points,
+        # Package data (icon, license)
+        include_package_data=include_package_data
+    )
+# Only build if possible
+else:
+    setup_(
+        name=name,
+        author=author,
+        author_email=author_email,
+        version=verstr,
+        install_requires=install_requires,
+        packages=find_packages(),
+        description=description,
+        long_description=LONG_DES,
+        entry_points=entry_points,
+        # Package data (icon, license)
+        include_package_data=include_package_data
+    )
